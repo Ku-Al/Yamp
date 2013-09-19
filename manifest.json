@@ -15,5 +15,8 @@
         "tabs",
         "http://yandex.st/*",
         "http://ya.ru/"
-    ]
+    ],
+    "background": { 
+        "scripts": ["background.js"]    
+    }
 }
