@@ -6,7 +6,7 @@
     "description": "Jamp from Yandex map in other",
     "icons": {"48":"images/mapicon.jpg"},
 
-    "browser_action": {
+    "page_action": { // действие только для текущей страницы
         "default_title": "Jamp to ...",
         "default_icon": "images/mapicon.jpg",
         "default_popup": "popup.html"

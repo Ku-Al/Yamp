@@ -17,11 +17,12 @@ function updateCoordinates(tabId) {
     });
 }
 
-function updateSelected(tabId) {
-    selectedCoordinates = coordinates[tabId];
-    if (selectedCoordinates)
-        chrome.pageAction.setTitle({tabId:tabId, title:selectedCoordinates});
-}
+chrome.tabs.onUpdated.addListener(function(tabId,info,tab) { // обновление вкладки 
+  if(info.url)
+    if(/maps.yandex./.test(info.url))
+      chrome.pageAction.show(tabId);
+	console.log(info.url);
+}); 
 
 chrome.tabs.onUpdated.addListener(function(tabId, change, tab) { // Всякий раз, когда вкладка обновляется
     if (change.status == "complete") {
@@ -29,10 +30,6 @@ chrome.tabs.onUpdated.addListener(function(tabId, change, tab) { // Всякий
     }
 });
 
-chrome.tabs.onSelectionChanged.addListener(function(tabId, info) { // При переключении вкладки
-    selectedId = tabId;
-    updateSelected(tabId);
-});
 
 // Ensure the current selected tab is set up.
 chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
