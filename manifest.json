@@ -8,13 +8,16 @@
 
     "page_action": { // действие только для текущей страницы
         "default_title": "Jamp to ...",
-        "default_icon": "images/mapicon.jpg",
+        "default_icon": "images/mapicon16x16.jpg",
         "default_popup": "popup.html"
     },
     "permissions": [
         "tabs",
         "http://yandex.st/*",
-        "http://ya.ru/"
+        "http://ya.ru/",
+		"http://maps.yandex.ua/*",
+		"https://passport.yandex.ru/",
+		"http://*.yandex.ru/"
     ],
     "background": { 
         "scripts": ["background.js"]    

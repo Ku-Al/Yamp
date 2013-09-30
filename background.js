@@ -17,18 +17,23 @@ function updateCoordinates(tabId) {
     });
 }
 
-chrome.tabs.onUpdated.addListener(function(tabId,info,tab) { // обновление вкладки 
-  if(info.url)
-    if(/maps.yandex./.test(info.url))
-      chrome.pageAction.show(tabId);
+chrome.tabs.onUpdated.addListener(function(tabId,info,tab) { // обновление вкладки
 	console.log(info.url);
+	if(info.url)
+    	if(/maps.yandex./.test(info.url)){
+      		chrome.pageAction.show(tabId);
+			if (change.status == "complete") {
+				updateCoordinates(tabId);				// обновляем координаты
+			}
+		}	
+	
 }); 
 
-chrome.tabs.onUpdated.addListener(function(tabId, change, tab) { // Всякий раз, когда вкладка обновляется
-    if (change.status == "complete") {
-        updateCoordinates(tabId);				// обновляем координаты
-    }
-});
+//chrome.tabs.onUpdated.addListener(function(tabId, change, tab) { // Всякий раз, когда вкладка обновляется
+//    if (change.status == "complete") {
+//        updateCoordinates(tabId);				// обновляем координаты
+//    }
+//});
 
 
 // Ensure the current selected tab is set up.
