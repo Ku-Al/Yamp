@@ -19,6 +19,20 @@
 		"https://passport.yandex.ru/",
 		"http://*.yandex.ru/"
     ],
+	"content_scripts": [{ 
+        "matches": [
+            "*://maps.google.com/*",
+            "*://maps.google.ru/*",
+            "*://maps.google.com.ua/*",
+            "*://maps.google.co.uk/*",
+            "http://openstreetmap.org/*",
+            "http://www.openstreetmap.org/*",
+            "http://wikimapia.org/*"
+        ],
+        "js": [
+            "yamp_content_script.js"
+        ]
+    }],
     "background": { 
         "scripts": ["background.js"]    
     }
